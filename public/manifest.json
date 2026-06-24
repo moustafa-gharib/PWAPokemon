@@ -21,6 +21,6 @@
     "lang": "nl",
     "name": "pokemon",
     "short_name": "pokemon",
-    "start_url": "/public/",
-    "scope": "/public/"
+    "start_url": "/PWAPokemon/",
+    "scope": "/PWAPokemon/"
 }
