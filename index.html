@@ -64,7 +64,7 @@
         window.addEventListener("load", async () => {
           try {
             await navigator.serviceWorker.register(
-              "/PwaPokeApp/service-worker.js",
+              "/public/service-worker.js",
             );
             console.log("Service Worker registered");
           } catch (error) {
