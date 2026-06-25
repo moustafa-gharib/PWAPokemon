@@ -23,7 +23,6 @@ const getPokemonId = (url) => {
   return parts[parts.length - 2]
 }
 
-// Gefilterde lijst op basis van zoekterm
 const filteredPokemons = computed(() => {
   if (!props.search) return pokemons.value
   return pokemons.value.filter(p =>
@@ -32,8 +31,6 @@ const filteredPokemons = computed(() => {
 })
 
 const paginatedPokemons = computed(() => {
-  // Bij zoeken geen paginering tonen
-  if (props.search) return filteredPokemons.value
   const start = (currentPage.value - 1) * itemsPerPage
   const end = start + itemsPerPage
   return filteredPokemons.value.slice(start, end)
@@ -61,7 +58,6 @@ const prevPage = () => {
 <template>
   <div class="pokemon-container">
 
-    <!-- Geen resultaten -->
     <p v-if="filteredPokemons.length === 0" class="no-results">
       Geen Pokémon gevonden voor "{{ search }}"
     </p>
@@ -91,8 +87,7 @@ const prevPage = () => {
       </li>
     </ul>
 
-    <!-- Paginering alleen tonen als er niet gezocht wordt -->
-    <div class="pagination" v-if="!search">
+    <div class="pagination">
       <button class="page-btn" @click="prevPage" :disabled="currentPage === 1">← Vorige</button>
       <span class="page-number">Pagina {{ currentPage }} van {{ totalPages }}</span>
       <button class="page-btn" @click="nextPage" :disabled="currentPage === totalPages">Volgende →</button>
@@ -103,7 +98,7 @@ const prevPage = () => {
 
 <style scoped>
 .pokemon-container {
-  padding: 60px 14px 0px 14px;
+  padding: 60px 14px 80px 14px;
 }
 
 .no-results {
